@@ -1,0 +1,589 @@
+{
+	"info": {
+		"_postman_id": "7cb85af9-7461-4469-acfd-fb3a5320d1a9",
+		"name": "Tech Challenge - Gp46",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15596861"
+	},
+	"item": [
+		{
+			"name": "#1-Lista Produtos [Lanche]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Produtos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Produtos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#2-Lista Produtos [Acompanhamento]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Produtos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Produtos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#3-Lista Produtos [Sobremesa]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Produtos/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Produtos",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#4-Lista Produtos [Bebida]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Produtos/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Produtos",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#5-Cadastro Cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cpf\": \"55281822047\",\r\n  \"nomeCompleto\": \"João da Silva Gomes\",\r\n  \"email\": \"joao.silva@dominio.com.br\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5293/Clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#6-Consulta Cliente CPF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Clientes/12851671049",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Clientes",
+						"12851671049"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#7-Confirmação Pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"dataPedido\": \"2023-10-24T18:00\",\r\n  \"clienteId\": \"717B2FB9-4BBE-4A8C-8574-7808CD652E0B\",\r\n  \"items\": [\r\n    {\r\n      \"itemPedidoId\": \"947e3d62-26fa-4ba6-8395-39c259fc43ec\",\r\n      \"valorUnitario\": 10,\r\n      \"quantidade\": 2,\r\n      \"observacao\": \"Sem alface\"\r\n    },\r\n    {\r\n      \"itemPedidoId\": \"a0d0225e-0f3c-42ff-935d-beb44bb2cac4\",\r\n      \"valorUnitario\": 8.25,\r\n      \"quantidade\": 1\r\n    },\r\n    {\r\n      \"itemPedidoId\": \"d23c72b6-0bbe-4e0d-a46e-b8d72da5e9ef\",\r\n      \"valorUnitario\": 1.25,\r\n      \"quantidade\": 1\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5293/Pedidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#8-Gerar Pagamento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pedidoId\": \"78E3B8D0-BE9A-4407-9304-C61788797808\",\r\n  \"valorPedido\": 19.25,\r\n  \"desconto\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5293/Pagamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pagamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#9-Realizar Pagamento",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"statusId\": 2,\r\n  \"valorPago\": 19.25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5293/pagamentos/4370277C-E9EB-49F4-976E-08DC1D385CCD/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"pagamentos",
+						"4370277C-E9EB-49F4-976E-08DC1D385CCD",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#9.1- Obter status do pagamento do pedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/pedidos/78E3B8D0-BE9A-4407-9304-C61788797808/pagamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"pedidos",
+						"78E3B8D0-BE9A-4407-9304-C61788797808",
+						"pagamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#9.2-Alterar Status [Pago]",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Pedidos/78E3B8D0-BE9A-4407-9304-C61788797808/status/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos",
+						"78E3B8D0-BE9A-4407-9304-C61788797808",
+						"status",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#10-Obter Pedidos [Pagos]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Pedidos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#11-Alterar Status [Em Preparação]",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Pedidos/78E3B8D0-BE9A-4407-9304-C61788797808/status/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos",
+						"78E3B8D0-BE9A-4407-9304-C61788797808",
+						"status",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#12-Obter Pedidos [Em Preparação]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Pedidos/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#13-Alterar Status [Montagem]",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Pedidos/4c7e2b4f-4b50-4354-9b16-1fb4adfcc8ba/status/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos",
+						"4c7e2b4f-4b50-4354-9b16-1fb4adfcc8ba",
+						"status",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#14-Obter Pedidos [Montagem]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Pedidos/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#15-Alterar Status [Pronto]",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Pedidos/4c7e2b4f-4b50-4354-9b16-1fb4adfcc8ba/status/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos",
+						"4c7e2b4f-4b50-4354-9b16-1fb4adfcc8ba",
+						"status",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#16-Obter Pedidos [Pronto]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Pedidos/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#17-Alterar Status [Finalizado]",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Pedidos/4c7e2b4f-4b50-4354-9b16-1fb4adfcc8ba/status/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Pedidos",
+						"4c7e2b4f-4b50-4354-9b16-1fb4adfcc8ba",
+						"status",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#18-Criar novo Produto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"FourSix Burguer Plus\",\r\n  \"descricao\": \"Lanche com hamburguer de carne, queijo, cebola e molho especial\",\r\n  \"categoria\": \"lanche\",\r\n  \"preco\": 20.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5293/Produtos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#19-Obter produto por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Produtos/f27bdafd-682d-430b-91ed-9398c03c3c76",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Produtos",
+						"f27bdafd-682d-430b-91ed-9398c03c3c76"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#20-Alterar produto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Burguer Six Plus\",\r\n  \"descricao\": \"Lanche com hamburguer de carne, queijo, cebola e molho especial\",\r\n  \"categoria\": \"lanche\",\r\n  \"preco\": 25.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5293/Produtos/673832a8-9cc8-4287-ab00-36a20585b368",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Produtos",
+						"673832a8-9cc8-4287-ab00-36a20585b368"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#21-Inativar produto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/Produtos/f27bdafd-682d-430b-91ed-9398c03c3c76",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"Produtos",
+						"f27bdafd-682d-430b-91ed-9398c03c3c76"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#22 - Pagamento Por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5293/pagamentos/4370277C-E9EB-49F4-976E-08DC1D385CCD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"pagamentos",
+						"4370277C-E9EB-49F4-976E-08DC1D385CCD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "#23 - Pedidos",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "#24 - Cancela pedido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pedidoId\": \"4c7e2b4f-4b50-4354-9b16-1fb4adfcc8ba\",\r\n  \"dataCancelamento\": \"2024-01-30T22:08:08.187Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5293/pedidos/cancelamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5293",
+					"path": [
+						"pedidos",
+						"cancelamentos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
