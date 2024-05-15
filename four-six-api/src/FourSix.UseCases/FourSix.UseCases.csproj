@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="UseCases\Pagamentos\NovaPasta1\**" />
+    <Compile Remove="UseCases\Pagamentos\NovaPasta\**" />
+    <EmbeddedResource Remove="UseCases\Pagamentos\NovaPasta1\**" />
+    <EmbeddedResource Remove="UseCases\Pagamentos\NovaPasta\**" />
+    <None Remove="UseCases\Pagamentos\NovaPasta1\**" />
+    <None Remove="UseCases\Pagamentos\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="UseCases\Pagamentos\AlterarStatusPagamento\WebhookPagamentRequest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FourSix.Domain\FourSix.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

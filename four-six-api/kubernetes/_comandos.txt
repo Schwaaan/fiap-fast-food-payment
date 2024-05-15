@@ -1,0 +1,41 @@
+------------VOLUME------------
+kubectl apply -f pv-claim.yaml
+
+----------SQL SERVER----------
+kubectl apply -f sqlserver-deployment.yaml
+kubectl apply -f sqlserver-service.yaml
+
+-------------REDIS------------
+kubectl apply -f redis-deployment.yaml
+kubectl apply -f redis-service.yaml
+
+--------------API-------------
+kubectl apply -f api-deployment.yaml
+kubectl apply -f api-service.yaml
+
+
+---------RODAR TODOS-----------
+kubectl apply -f pv-claim.yaml,sqlserver-deployment.yaml,sqlserver-service.yaml,redis-deployment.yaml,redis-service.yaml,api-deployment.yaml,api-service.yaml,api-hpa.yaml,metrics.yaml
+
+
+
+
+--------------GET-------------
+kubectl get all
+kubectl get pod
+kubectl get deployment
+kubectl get service
+kubectl get pv
+kubectl get pvc
+
+
+------------DELETE------------
+kubectl delete service --all
+kubectl delete deployment --all
+kubectl delete pod --all
+kubectl delete pvc --all
+kubectl delete pv --all
+
+
+---------DELETE ALL---------
+kubectl delete all --all

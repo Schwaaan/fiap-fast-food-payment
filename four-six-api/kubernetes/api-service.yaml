@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: api-svc-foursix
+  name: api-svc-foursix
+spec:
+  selector:
+    app: foursix-deployment
+  ports:
+  - port: 30001
+    protocol: TCP
+    targetPort: 80
+  type: LoadBalancer

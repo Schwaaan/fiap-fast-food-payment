@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  fourSixApi:
+    image: damffranco/four-six-api:latest
+    container_name: "fourSixApi"
+    ports: 
+      - "5293:80"
+    networks:
+      - foursix-bridge
+    depends_on:
+      fourSixSql:
+        condition: service_healthy
+  fourSixSql:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+      SA_PASSWORD: 'SenhaDoBanco(123)'
+      ACCEPT_EULA: "Y"
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-Usa", "-PSenhaDoBanco(123)", "-Q", "select 1"]
+      interval: 1s
+      retries: 20
+    ports:
+      - "1433:1433"
+    container_name: "fourSixSql"
+    networks:
+      - foursix-bridge
+networks:
+  foursix-bridge:
+    driver: bridge
