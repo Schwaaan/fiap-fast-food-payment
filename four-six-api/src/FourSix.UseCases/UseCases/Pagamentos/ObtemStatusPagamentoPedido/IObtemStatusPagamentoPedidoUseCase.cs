@@ -1,6 +1,6 @@
 ﻿using FourSix.Domain.Entities.PagamentoAggregate;
 
-namespace FourSix.UseCases.UseCases.Pedidos.ObtemStatusPagamentoPedido
+namespace FourSix.UseCases.UseCases.Pagamentos.ObtemStatusPagamentoPedido
 {
     public interface IObtemStatusPagamentoPedidoUseCase
     {

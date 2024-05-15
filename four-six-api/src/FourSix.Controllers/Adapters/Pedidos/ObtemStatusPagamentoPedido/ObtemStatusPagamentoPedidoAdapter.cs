@@ -1,6 +1,6 @@
 ﻿using FourSix.Controllers.Presenters;
 using FourSix.Controllers.ViewModels;
-using FourSix.UseCases.UseCases.Pedidos.ObtemStatusPagamentoPedido;
+using FourSix.UseCases.UseCases.Pagamentos.ObtemStatusPagamentoPedido;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

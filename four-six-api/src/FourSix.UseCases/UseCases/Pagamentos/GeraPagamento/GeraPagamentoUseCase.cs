@@ -26,7 +26,7 @@ namespace FourSix.UseCases.UseCases.Pagamentos.GeraPagamento
         {
             var qrCode = await _geraQRCodeUseCase.Execute(pedidoId, valor);
 
-            var pagamento = new Pagamento(pedidoId, qrCode, EnumStatusPagamento.AguardandoPagamento, valor, desconto, valor - desconto, 0);
+            var pagamento = new Pagamento(pedidoId, qrCode, EnumStatusPagamento.AguardandoPagamento, valor, desconto);
 
             await _pagamentoRepository.Incluir(pagamento);
 
