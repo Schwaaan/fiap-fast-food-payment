@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sqlserver-deployment
+  name: sqlserver-payment-deployment
   labels:
-    app: sqlserver-deployment
+    app: sqlserver-payment-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mssql
+      app: paymentmssql
   template:
     metadata:
       labels:
-        app: mssql
+        app: paymentmssql
     spec:
       containers:
-      - name: mssql
+      - name: paymentmssql
         image: mcr.microsoft.com/mssql/server:2022-latest
         ports:
           - containerPort: 1433
@@ -25,9 +25,9 @@ spec:
         - name: ACCEPT_EULA
           value: "Y"
         volumeMounts:
-        - name: mssqldb
+        - name: paymentmssqldb
           mountPath: /var/opt/mssql/data
       volumes:
-      - name: mssqldb
+      - name: paymentmssqldb
         persistentVolumeClaim:
-          claimName: mssql-pvc
+          claimName: mssql-payment-pvc

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mssql-pvc
+  name: mssql-payment-pvc
 spec:
   #storageClassName: manual   --somente informar quando houver pv criado
   accessModes:

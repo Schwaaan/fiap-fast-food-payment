@@ -2,12 +2,12 @@ version: '3.4'
 
 services:
   fourSixApi:
-    image: damffranco/four-six-api:latest
-    container_name: "fourSixApi"
+    image: ivangomesneto/four-six-payment-api:latest
+    container_name: "fourSixPaymentApi"
     ports: 
       - "5293:80"
     networks:
-      - foursix-bridge
+      - foursix-payment-bridge
     depends_on:
       fourSixSql:
         condition: service_healthy
@@ -22,9 +22,9 @@ services:
       retries: 20
     ports:
       - "1433:1433"
-    container_name: "fourSixSql"
+    container_name: "fourSixPaymentSql"
     networks:
-      - foursix-bridge
+      - foursix-payment-bridge
 networks:
   foursix-bridge:
     driver: bridge

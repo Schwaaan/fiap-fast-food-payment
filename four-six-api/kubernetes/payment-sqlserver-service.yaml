@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: redis
-  name: redis
+    app: paymentsqlserver
+  name: foursixpaymentsql
 spec:
   selector:
-    app: redis
+    app: paymentmssql
   ports:
-  - port: 6379
+  - port: 1433
     protocol: TCP
-    targetPort: 6379
+    targetPort: 1433
   type: LoadBalancer

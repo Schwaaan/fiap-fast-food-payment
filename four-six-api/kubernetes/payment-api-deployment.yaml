@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: foursix-deployment
+  name: foursix-payment-deployment
   labels:
-    app: foursix-deployment
+    app: foursix-payment-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: foursix-deployment
+      app: foursix-payment-deployment
   template:
     metadata:
       labels:
-        app: foursix-deployment
+        app: foursix-payment-deployment
     spec:
       containers:
-      - name: c-foursix-deployment
-        image: damffranco/four-six-api:latest
+      - name: c-foursix-payment-deployment
+        image: ivangomesneto/four-six-payment-api:latest
         ports:
         - containerPort: 80
         resources:
