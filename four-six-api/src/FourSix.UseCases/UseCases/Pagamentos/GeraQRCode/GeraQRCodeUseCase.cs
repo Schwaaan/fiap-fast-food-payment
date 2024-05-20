@@ -1,4 +1,5 @@
 ﻿using FourSix.Domain.ExtensionsMethods;
+using System.Globalization;
 using System.Text;
 
 namespace FourSix.UseCases.UseCases.Pagamentos.GeraQRCode
@@ -9,7 +10,7 @@ namespace FourSix.UseCases.UseCases.Pagamentos.GeraQRCode
         {
         }
 
-        public Task<string> Execute(Guid pedidoId, decimal valor) =>
+        public virtual Task<string> Execute(Guid pedidoId, decimal valor) =>
             this.GerarQRCode(pedidoId, valor);
 
         private async Task<string> GerarQRCode(Guid pedidoId, decimal valor)
@@ -26,7 +27,7 @@ namespace FourSix.UseCases.UseCases.Pagamentos.GeraQRCode
             builder.Append(pedidoId);
             builder.Append("0000");
             builder.Append("986");
-            builder.AppendFormat("0.00", valor);
+            builder.AppendFormat(new NumberFormatInfo { NumberDecimalSeparator = "." }, "{0:0.00}", valor);
             builder.Append("BR");
             builder.Append(nomeBeneficiario.RemoverAcentos());
             builder.Append(nomeCidade.RemoverAcentos());

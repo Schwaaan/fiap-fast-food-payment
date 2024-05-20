@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: paymentsqlserver
+  name: foursixpaymentsql
+spec:
+  selector:
+    app: paymentmssql
+  ports:
+  - port: 1436
+    protocol: TCP
+    targetPort: 1433
+  type: LoadBalancer

@@ -4,14 +4,14 @@ EXPOSE 80
 EXPOSE 443
 
 ENV ASPNETCORE_URLS=http://*:8000;http://*:80;
-ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_ENVIRONMENT=
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
-COPY ["src/FourSix.Application/*.csproj", "FourSix.Application/"]
+COPY ["src/FourSix.Controllers/*.csproj", "FourSix.Controllers/"]
 COPY ["src/FourSix.Domain/*.csproj", "FourSix.Domain/"]
-COPY ["src/FourSix.Infrastructure/*.csproj", "FourSix.Infrastructure/"]
+COPY ["src/FourSix.UseCases/*.csproj", "FourSix.UseCases/"]
 COPY ["src/FourSix.WebApi/*.csproj", "FourSix.WebApi/"]
 
 RUN dotnet restore "FourSix.WebApi/FourSix.WebApi.csproj"

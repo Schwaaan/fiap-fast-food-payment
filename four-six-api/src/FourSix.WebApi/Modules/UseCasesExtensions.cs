@@ -3,7 +3,7 @@ using FourSix.UseCases.UseCases.Pagamentos.AlterarStatusPagamento;
 using FourSix.UseCases.UseCases.Pagamentos.BuscaPagamento;
 using FourSix.UseCases.UseCases.Pagamentos.GeraPagamento;
 using FourSix.UseCases.UseCases.Pagamentos.GeraQRCode;
-using FourSix.UseCases.UseCases.Pedidos.ObtemStatusPagamentoPedido;
+using FourSix.UseCases.UseCases.Pagamentos.ObtemStatusPagamentoPedido;
 
 namespace FourSix.WebApi.Modules
 {

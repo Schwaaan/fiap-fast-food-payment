@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqlserver-payment-deployment
+  labels:
+    app: sqlserver-payment-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paymentmssql
+  template:
+    metadata:
+      labels:
+        app: paymentmssql
+    spec:
+      containers:
+      - name: paymentmssql
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        ports:
+          - containerPort: 1433
+        env:
+        - name: MSSQL_SA_PASSWORD
+          value: 'SenhaDoBanco(123)'
+        - name: ACCEPT_EULA
+          value: "Y"
+        volumeMounts:
+        - name: paymentmssqldb
+          mountPath: /var/opt/mssql/data
+      volumes:
+      - name: paymentmssqldb
+        persistentVolumeClaim:
+          claimName: mssql-payment-pvc

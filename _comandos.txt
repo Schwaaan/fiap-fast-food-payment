@@ -1,0 +1,3 @@
+dotnet test --collect "Xplat Code Coverage"
+reportgenerator "-reports:.\four-six-api\tests\FourSix.Test\TestResults\62a94cee-1b40-4779-91eb-caf4d4e008b5\coverage.cobertura.xml" "-targetdir:coveragereport" -reporttypes:Html
+E:\Projetos\Fiap\Fase 4\fiap-fast-food-payment\coveragereport

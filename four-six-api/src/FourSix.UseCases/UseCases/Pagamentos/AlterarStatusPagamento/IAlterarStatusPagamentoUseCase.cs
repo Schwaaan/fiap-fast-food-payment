@@ -4,6 +4,6 @@ namespace FourSix.UseCases.UseCases.Pagamentos.AlterarStatusPagamento
 {
     public interface IAlterarStatusPagamentoUseCase
     {
-        Task<Pagamento> Execute(Guid pagamentoId, EnumStatusPagamento statusId);
+        Task<Pagamento> Execute(Guid pagamentoId, EnumStatusPagamento statusId, decimal? valorPago = null);
     }
 }
