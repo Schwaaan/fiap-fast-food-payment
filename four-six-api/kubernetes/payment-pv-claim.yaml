@@ -3,9 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: mssql-payment-pvc
 spec:
-  #storageClassName: manual   --somente informar quando houver pv criado
+  storageClassName: manual   #somente informar quando houver pv criado
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 10Mi
+      storage: 2Mi
