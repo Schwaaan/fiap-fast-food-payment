@@ -25,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes", "kubernetes", 
 		four-six-api\kubernetes\payment-api-deployment.yaml = four-six-api\kubernetes\payment-api-deployment.yaml
 		four-six-api\kubernetes\payment-api-service.yaml = four-six-api\kubernetes\payment-api-service.yaml
 		four-six-api\kubernetes\payment-pv-claim.yaml = four-six-api\kubernetes\payment-pv-claim.yaml
+		four-six-api\kubernetes\payment-pv-volume.yaml = four-six-api\kubernetes\payment-pv-volume.yaml
 		four-six-api\kubernetes\payment-sqlserver-deployment.yaml = four-six-api\kubernetes\payment-sqlserver-deployment.yaml
 		four-six-api\kubernetes\payment-sqlserver-service.yaml = four-six-api\kubernetes\payment-sqlserver-service.yaml
 		four-six-api\kubernetes\stress.ps1 = four-six-api\kubernetes\stress.ps1
