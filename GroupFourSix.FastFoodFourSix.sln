@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6A6341B0-93B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C5E6AA7C-A8C1-4E91-8EBB-75CE0DD876DA}"
 	ProjectSection(SolutionItems) = preProject
-		_comandos.txt = _comandos.txt
+		four-six-api\tests\_comandos.txt = four-six-api\tests\_comandos.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FourSix.Domain", "four-six-api\src\FourSix.Domain\FourSix.Domain.csproj", "{B47C602A-15FD-433E-95BE-B84B55EDABBC}"

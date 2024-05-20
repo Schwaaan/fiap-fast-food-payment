@@ -15,7 +15,7 @@ kubectl apply -f api-service.yaml
 
 
 ---------RODAR TODOS-----------
-kubectl apply -f payment-pv-claim.yaml,payment-sqlserver-deployment.yaml,payment-sqlserver-service.yaml,payment-api-deployment.yaml,payment-api-service.yaml
+kubectl apply -f payment-sqlserver-deployment.yaml,payment-sqlserver-service.yaml,payment-api-deployment.yaml,payment-api-service.yaml
 
 
 
@@ -49,3 +49,5 @@ docker push ivangomesneto/four-six-payment-api:latest
 
 AWS
 aws configure
+aws configure set aws_session_token IQoJb3JpZ2luX2VjEKz//////////wEaCXVzLXdlc3QtMiJHMEUCIFrl5ua7yfoJbSv+dFx8ZiqhZzUC5o/d3ZsQLEkWmc+0AiEAtYqBwV0lE98oafTC0zcQea/Y0wL7G0mPgPmZ+3a6UCsqtAIIJBAAGgwwMTAxNDMzMzk3ODgiDKgFpu+b4+vnVO3uXCqRAmherLOjB7ikIzvMMlFao0qDifzb4bmEi5svIboqrcCLPoehVGbsxW80vIlVKDkX6vgawlLAt/8I/fZKSgfQqNlhNB5jxPotpOkojrMFczbI0YtAMODKLcObxLNy7Ds0DsCj7f4OYhkY8mkHVyAGxXgYtMNpirQdzaH+UkEjRKLOgSYhkNrScL3JUnWlAUKtKKTTHdK1B5rIOoZPybHXFq2E8LDWNt27o3/POrm5UAlpAVKVY+qMAcC2qe7+AQwm/WJxkRrDtpg/2u4sNzkAbP5AzNYeE5YL1MYbvz7RcZRE+doaAM/0jUB+i0YhQ4BrOXzrdMiyrrf7DVJ6xuD03ID4E0czWYcv0MMh1BvSGOgcTTCigquyBjqdAR7cLS0efWm87qgs+KHKSNJtwwedjxMQkp/dItjyD3cOkUcXTOTD4EHoiOk/As/wYiX51r9emo+xHJB1zO/uEBTmoG4jvfstCPxz0rl8enfWiqtivcOdJ33PUUPe1RFeR2vUpV6v9QK0lYTF+jOqD5q5Q+/SmVZKyCrN2mA3vPB0odSYCiWLmmbmSGrBDalfhaxi8RZYdVT7aO7an/U=
+aws eks --region us-east-1 update-kubeconfig --name Fiap-FourSix
