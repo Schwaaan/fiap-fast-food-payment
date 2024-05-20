@@ -7,13 +7,10 @@ namespace FourSix.Controllers.Adapters.Pagamentos.AlteraStatusPagamento
     public class AlteraStatusPagamentoAdapter : IAlteraStatusPagamentoAdapter
     {
         private readonly IAlterarStatusPagamentoUseCase _useCase;
-        private readonly IOrderIntegrationService _orderService;
 
-        public AlteraStatusPagamentoAdapter(IAlterarStatusPagamentoUseCase useCase,
-            IOrderIntegrationService orderService)
+        public AlteraStatusPagamentoAdapter(IAlterarStatusPagamentoUseCase useCase)
         {
             _useCase = useCase;
-            _orderService = orderService;
         }
 
         public async Task<AlteraStatusPagamentoResponse> AlterarStatus(AlteraStatusPagamentRequest request, Guid pagamentoId)
@@ -23,8 +20,6 @@ namespace FourSix.Controllers.Adapters.Pagamentos.AlteraStatusPagamento
             try
             {
                 var pagamento = await _useCase.Execute(pagamentoId, request.StatusId, request.ValorPago);
-
-                await _orderService.AtualizarPedido(pagamento.PedidoId, pagamento.StatusId);
 
                 model = new PagamentoModel(pagamento);
             }

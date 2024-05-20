@@ -14,11 +14,12 @@ namespace FourSix.Test.Units.Pagamentos
     {
         private Mock<IPagamentoRepository> _mockRepository;
         private Mock<IUnitOfWork> _mockUnitOfWork;
-
+        private Mock<IOrderIntegrationService> _mockIntegrationService;
         public UnitTest()
         {
             _mockRepository = new();
             _mockUnitOfWork = new();
+            _mockIntegrationService = new();
         }
 
         #region [ Classe Pagamento ]
@@ -58,7 +59,7 @@ namespace FourSix.Test.Units.Pagamentos
         public async void Altera_status_pagamento_OK()
         {
             //Arrange
-            AlterarStatusPagamentoUseCase useCase = new(_mockRepository.Object, _mockUnitOfWork.Object);
+            AlterarStatusPagamentoUseCase useCase = new(_mockRepository.Object, _mockUnitOfWork.Object, _mockIntegrationService.Object);
             Pagamento pagamento = MontarClassePagamento();
             _mockRepository.Setup(repo => repo.Obter(pagamento.Id)).Returns(pagamento);
             _mockRepository.Setup(repo => repo.Alterar(pagamento)).Returns(Task.CompletedTask);
@@ -75,7 +76,7 @@ namespace FourSix.Test.Units.Pagamentos
         public async void Altera_status_pagamento_inexistente()
         {
             //Arrange
-            AlterarStatusPagamentoUseCase useCase = new(_mockRepository.Object, _mockUnitOfWork.Object);
+            AlterarStatusPagamentoUseCase useCase = new(_mockRepository.Object, _mockUnitOfWork.Object, _mockIntegrationService.Object);
             Pagamento pagamento = MontarClassePagamento();
             _mockRepository.Setup(repo => repo.Obter(It.IsAny<Guid>())).Returns(() => null);
             _mockRepository.Setup(repo => repo.Alterar(pagamento)).Returns(Task.CompletedTask);
