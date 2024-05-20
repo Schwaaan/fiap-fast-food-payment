@@ -19,6 +19,3 @@ spec:
         image: ivangomesneto/four-six-payment-api:latest
         ports:
         - containerPort: 80
-        resources:
-          limits:
-            cpu: 50m

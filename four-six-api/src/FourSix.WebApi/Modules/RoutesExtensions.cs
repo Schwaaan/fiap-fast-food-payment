@@ -21,6 +21,7 @@ namespace FourSix.WebApi.Modules
             }).WithTags("Pedidos").AllowAnonymous(); ;
 
             #endregion
+
             #region [ Pagamentos ]
 
             app.MapPost("pagamentos",

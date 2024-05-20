@@ -20,6 +20,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAdapters();
 builder.Services.AddDatabase();
 builder.Services.AddUseCases();
+builder.Services.AddIntegrations();
+builder.Services.AddHttpClient();
 builder.Services.AddCustomControllers();
 builder.Services.AddCustomCors();
 builder.Services.AddSwaggerConfig();
