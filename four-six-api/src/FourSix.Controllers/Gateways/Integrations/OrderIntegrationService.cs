@@ -1,9 +1,11 @@
 ﻿using FourSix.Domain.Entities.PagamentoAggregate;
 using FourSix.UseCases.Interfaces;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FourSix.Controllers.Gateways.Integrations
 {
+    [ExcludeFromCodeCoverage]
     public class OrderIntegrationService : IOrderIntegrationService
     {
         private readonly HttpClient _httpClient;

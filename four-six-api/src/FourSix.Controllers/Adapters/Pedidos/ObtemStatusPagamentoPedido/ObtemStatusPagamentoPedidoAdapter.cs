@@ -2,9 +2,11 @@
 using FourSix.UseCases.UseCases.Pagamentos.ObtemStatusPagamentoPedido;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FourSix.Controllers.Adapters.Pedidos.ObtemStatusPagamentoPedido
 {
+    [ExcludeFromCodeCoverage]
     public class ObtemStatusPagamentoPedidoAdapter : IObtemStatusPagamentoPedidoAdapter
     {
         private readonly IObtemStatusPagamentoPedidoUseCase _useCase;

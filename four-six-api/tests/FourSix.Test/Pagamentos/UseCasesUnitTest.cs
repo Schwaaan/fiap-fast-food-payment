@@ -1,4 +1,6 @@
-﻿using FourSix.Controllers.Gateways.Repositories;
+﻿using FourSix.Controllers.Adapters.Pedidos.ObtemStatusPagamentoPedido;
+using FourSix.Controllers.Gateways.Repositories;
+using FourSix.Controllers.ViewModels;
 using FourSix.Domain.Entities.PagamentoAggregate;
 using FourSix.UseCases.Interfaces;
 using FourSix.UseCases.UseCases.Pagamentos.AlterarStatusPagamento;
@@ -148,25 +150,19 @@ namespace FourSix.Test.Pagamentos
 
         #endregion
 
-        //#region [ ObtemStatusPagamentoPedidoUseCase ]
+        [Fact]
+        public void Constructor_SetsStatusPagamentoProperty()
+        {
+            // Arrange
+            var statusPagamentoModel = new StatusPagamentoModel(new Domain.Entities.PagamentoAggregate.StatusPagamento
+            (EnumStatusPagamento.Pago, "Pagamento concluído com sucesso"));
 
-        //[Fact]
-        //public async void Obtem_status_pagamento_por_id_pedido_ok()
-        //{
-        //    //Arrange
-        //    ObtemStatusPagamentoPedidoUseCase useCase = new(_mockRepository.Object);
-        //    Pagamento pagamento = MontarClassePagamento(statusPagamento: EnumStatusPagamento.Pago);
-        //    var pagamentos = new List<Pagamento> { pagamento };
-        //    _mockRepository.Setup(repo => repo.ObterPagamentosPorPedido(pagamento.PedidoId)).Returns(pagamentos.AsQueryable());
+            // Act
+            var response = new ObtemStatusPagamentoPedidoResponse(statusPagamentoModel);
 
-        //    //Act
-        //    var resultado = await useCase.Execute(pagamento.PedidoId);
-
-        //    //Assert
-        //    Assert.Equal(pagamento.StatusId, resultado.Id);
-        //}
-
-        //#endregion
+            // Assert
+            Assert.Equal(statusPagamentoModel, response.StatusPagamento);
+        }
 
         #region [ Private methods ]
 

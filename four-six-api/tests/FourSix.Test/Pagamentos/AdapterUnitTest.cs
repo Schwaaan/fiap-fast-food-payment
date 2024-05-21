@@ -1,6 +1,7 @@
 ﻿using FourSix.Controllers.Adapters.Pagamentos.AlteraStatusPagamento;
 using FourSix.Controllers.Adapters.Pagamentos.BuscaPagamento;
 using FourSix.Controllers.Adapters.Pagamentos.GeraPagamento;
+using FourSix.Controllers.ViewModels;
 using FourSix.Domain.Entities.PagamentoAggregate;
 using FourSix.UseCases.UseCases.Pagamentos.AlterarStatusPagamento;
 using FourSix.UseCases.UseCases.Pagamentos.BuscaPagamento;
@@ -92,6 +93,20 @@ namespace FourSix.Test.Pagamentos
         }
 
         #endregion
+
+        [Fact]
+        public void Constructor_SetsPropertiesCorrectly()
+        {
+            // Arrange
+            var statusPagamento = new StatusPagamento(EnumStatusPagamento.Pago, "Pagamento concluído com sucesso");
+
+            // Act
+            var statusPagamentoModel = new StatusPagamentoModel(statusPagamento);
+
+            // Assert
+            Assert.Equal(EnumStatusPagamento.Pago, statusPagamentoModel.StatusId);
+            Assert.Equal("Pagamento concluído com sucesso", statusPagamentoModel.Descricao);
+        }
 
         #region [ Private methods ]
 
