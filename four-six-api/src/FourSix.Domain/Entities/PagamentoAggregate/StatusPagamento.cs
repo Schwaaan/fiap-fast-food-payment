@@ -10,6 +10,16 @@
 
     public class StatusPagamento
     {
+        public StatusPagamento()
+        {
+        }
+
+        public StatusPagamento(EnumStatusPagamento id, string descricao)
+        {
+            Id = id;
+            Descricao = descricao;
+        }
+
         public EnumStatusPagamento Id { get; }
         public string Descricao { get; }
     }

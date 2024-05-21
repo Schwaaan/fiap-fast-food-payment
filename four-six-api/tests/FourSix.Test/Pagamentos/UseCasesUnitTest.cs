@@ -1,4 +1,5 @@
-﻿using FourSix.Domain.Entities.PagamentoAggregate;
+﻿using FourSix.Controllers.Gateways.Repositories;
+using FourSix.Domain.Entities.PagamentoAggregate;
 using FourSix.UseCases.Interfaces;
 using FourSix.UseCases.UseCases.Pagamentos.AlterarStatusPagamento;
 using FourSix.UseCases.UseCases.Pagamentos.BuscaPagamento;
@@ -6,52 +7,26 @@ using FourSix.UseCases.UseCases.Pagamentos.GeraPagamento;
 using FourSix.UseCases.UseCases.Pagamentos.GeraQRCode;
 using FourSix.UseCases.UseCases.Pagamentos.ObtemStatusPagamentoPedido;
 using Moq;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace FourSix.Test.Units.Pagamentos
+namespace FourSix.Test.Pagamentos
 {
-    public class UnitTest
+    public class UseCasesUnitTest
     {
         private Mock<IPagamentoRepository> _mockRepository;
         private Mock<IUnitOfWork> _mockUnitOfWork;
         private Mock<IOrderIntegrationService> _mockIntegrationService;
-        public UnitTest()
+        public UseCasesUnitTest()
         {
             _mockRepository = new();
             _mockUnitOfWork = new();
             _mockIntegrationService = new();
         }
-
-        #region [ Classe Pagamento ]
-
-        [Fact]
-        public void Cria_classe_pagamento()
-        {
-            Guid pedidoId = Guid.NewGuid();
-            string codigoQR = "codigodeteste";
-            EnumStatusPagamento statusPagamento = EnumStatusPagamento.AguardandoPagamento;
-            decimal valorPedido = 35.78M;
-            decimal desconto = 1.50M;
-            decimal valorTotal = valorPedido - desconto;
-            decimal valorPago = 0;
-
-            Pagamento pagamento = MontarClassePagamento(pedidoId: pedidoId,
-                codigoQR: codigoQR,
-                statusPagamento: statusPagamento,
-                valorPedido: valorPedido,
-                desconto: desconto,
-                valorPago: valorPago);
-
-            Assert.Equal(pedidoId, pagamento.PedidoId);
-            Assert.Equal(codigoQR, pagamento.CodigoQR);
-            Assert.Equal(statusPagamento, pagamento.StatusId);
-            Assert.Equal(valorPedido, pagamento.ValorPedido);
-            Assert.Equal(desconto, pagamento.Desconto);
-            Assert.Equal(valorTotal, pagamento.ValorTotal);
-            Assert.Equal(valorPago, pagamento.ValorPago);
-        }
-
-        #endregion
 
         #region [ AlterarStatusPagamentoUseCase ]
 
@@ -173,7 +148,7 @@ namespace FourSix.Test.Units.Pagamentos
 
         #endregion
 
-        #region [ ObtemStatusPagamentoPedidoUseCase ]
+        //#region [ ObtemStatusPagamentoPedidoUseCase ]
 
         //[Fact]
         //public async void Obtem_status_pagamento_por_id_pedido_ok()
@@ -181,16 +156,17 @@ namespace FourSix.Test.Units.Pagamentos
         //    //Arrange
         //    ObtemStatusPagamentoPedidoUseCase useCase = new(_mockRepository.Object);
         //    Pagamento pagamento = MontarClassePagamento(statusPagamento: EnumStatusPagamento.Pago);
-        //    _mockRepository.Setup(repo => repo.ObterPagamentosPorPedido(pagamento.PedidoId)).Returns(new List<Pagamento> { pagamento });
+        //    var pagamentos = new List<Pagamento> { pagamento };
+        //    _mockRepository.Setup(repo => repo.ObterPagamentosPorPedido(pagamento.PedidoId)).Returns(pagamentos.AsQueryable());
 
         //    //Act
         //    var resultado = await useCase.Execute(pagamento.PedidoId);
 
         //    //Assert
-        //    Assert.Equal(new StatusPagamento(), resultado);
+        //    Assert.Equal(pagamento.StatusId, resultado.Id);
         //}
 
-        #endregion
+        //#endregion
 
         #region [ Private methods ]
 

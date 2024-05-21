@@ -1,5 +1,4 @@
-﻿using FourSix.Controllers.Presenters;
-using FourSix.UseCases.UseCases.Pagamentos.AlterarStatusPagamento;
+﻿using FourSix.UseCases.UseCases.Pagamentos.AlterarStatusPagamento;
 using FourSix.UseCases.UseCases.Pagamentos.BuscaPagamento;
 using FourSix.UseCases.UseCases.Pagamentos.GeraPagamento;
 using FourSix.UseCases.UseCases.Pagamentos.GeraQRCode;
@@ -11,8 +10,6 @@ namespace FourSix.WebApi.Modules
     {
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
-            services.AddScoped<Notification, Notification>();
-
             #region [ Pagamento ]
             services.AddScoped<IGeraQRCodeUseCase, GeraQRCodeUseCase>();
             services.AddScoped<IGeraPagamentoUseCase, GeraPagamentoUseCase>();

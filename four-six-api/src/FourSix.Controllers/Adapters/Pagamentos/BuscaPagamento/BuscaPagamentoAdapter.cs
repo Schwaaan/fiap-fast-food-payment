@@ -1,5 +1,4 @@
-﻿using FourSix.Controllers.Presenters;
-using FourSix.Controllers.ViewModels;
+﻿using FourSix.Controllers.ViewModels;
 using FourSix.UseCases.UseCases.Pagamentos.BuscaPagamento;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -9,15 +8,11 @@ namespace FourSix.Controllers.Adapters.Pagamentos.BuscaPagamento
 {
     public class BuscaPagamentoAdapter : IBuscaPagamentoAdapter
     {
-        private readonly Notification _notification;
-
         private readonly IBuscaPagamentoUseCase _useCase;
 
-        public BuscaPagamentoAdapter(Notification notification,
-            IBuscaPagamentoUseCase useCase)
+        public BuscaPagamentoAdapter(IBuscaPagamentoUseCase useCase)
         {
             _useCase = useCase;
-            _notification = notification;
         }
 
 
