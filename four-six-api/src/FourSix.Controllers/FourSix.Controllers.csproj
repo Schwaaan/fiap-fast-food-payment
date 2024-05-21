@@ -23,4 +23,8 @@
     <ProjectReference Include="..\FourSix.UseCases\FourSix.UseCases.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Presenters\" />
+  </ItemGroup>
+
 </Project>
