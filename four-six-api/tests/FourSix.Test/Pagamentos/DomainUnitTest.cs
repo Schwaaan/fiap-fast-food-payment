@@ -53,10 +53,13 @@ namespace FourSix.Test.Pagamentos
 
         public void Cria_classe_status_pagamento()
         {
-            StatusPagamento statusPagamento = MontarClasseStatusPagamento();
+            var statusPagamento = EnumStatusPagamento.Pago;
+            string descricao = "Pago";
 
-            Assert.True(statusPagamento.Id > 0);
-            Assert.False(string.IsNullOrEmpty(statusPagamento.Descricao));
+            StatusPagamento status = MontarClasseStatusPagamento(statusPagamento, descricao);
+
+            Assert.Equal(statusPagamento, status.Id);
+            Assert.Equal(descricao, status.Descricao);
         }
 
         #endregion
@@ -79,9 +82,12 @@ namespace FourSix.Test.Pagamentos
                 valorPago ?? 0);
         }
 
-        private StatusPagamento MontarClasseStatusPagamento()
+        private StatusPagamento MontarClasseStatusPagamento(EnumStatusPagamento? statusPagamento = null, string? descricao = null)
         {
-            return new StatusPagamento(EnumStatusPagamento.Pago, "Pago");
+            statusPagamento ??= EnumStatusPagamento.AguardandoPagamento;
+            descricao ??= "Aguardando Pagamento";
+
+            return new StatusPagamento(statusPagamento.Value, descricao);
         }
 
         #endregion
