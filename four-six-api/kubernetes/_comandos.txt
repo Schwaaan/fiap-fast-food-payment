@@ -39,6 +39,7 @@ kubectl delete all --all
 DOCKER BUILD
 docker build -t four-six-payment-api:latest .
 docker tag four-six-payment-api:latest ivangomesneto/four-six-payment-api:latest
+docker login -u ivangomesneto
 docker push ivangomesneto/four-six-payment-api:latest
 
 

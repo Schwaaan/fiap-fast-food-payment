@@ -34,7 +34,7 @@ namespace FourSix.UseCases.UseCases.Pagamentos.AlterarStatusPagamento
 
             await _pagamentoRepository.Alterar(pagamento);
 
-            await _orderService.AtualizarPedido(pagamento.PedidoId, pagamento.StatusId);
+            await _orderService.AtualizarPedido(pagamento.PedidoId, pagamento.StatusId, pagamento.DataAtualizacao);
 
             await _unitOfWork.Save();
 

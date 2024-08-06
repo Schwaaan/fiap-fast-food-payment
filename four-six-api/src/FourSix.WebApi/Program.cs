@@ -2,12 +2,11 @@ using FourSix.Controllers.Gateways.DataAccess;
 using FourSix.Controllers.Middlewares;
 using FourSix.WebApi.Modules;
 using FourSix.WebApi.Modules.Commons;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Amazon.Extensions.CognitoAuthentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,22 +24,23 @@ builder.Services.AddHttpClient();
 builder.Services.AddCustomControllers();
 builder.Services.AddCustomCors();
 builder.Services.AddSwaggerConfig();
-builder.Services.AddCognitoIdentity();
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.Authority = builder.Configuration["AWSCognito:Authority"];
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        ValidateAudience = false
-    };
-});
+//TODO - Removida autenticação
+//builder.Services.AddCognitoIdentity();
+//builder.Services.AddAuthentication(options =>
+//{
+//    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//})
+//.AddJwtBearer(options =>
+//{
+//    options.Authority = builder.Configuration["AWSCognito:Authority"];
+//    options.TokenValidationParameters = new TokenValidationParameters
+//    {
+//        ValidateIssuerSigningKey = true,
+//        ValidateAudience = false
+//    };
+//});
 
 builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
 {
@@ -65,7 +65,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(
@@ -79,8 +79,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<CustomHttpContextMiddleware>();
 
-app.UseAuthentication();
-app.UseAuthorization();
+//TODO - Removida autenticação
+//app.UseAuthentication();
+//app.UseAuthorization();
 
 app.AddRoutesMaps();
 

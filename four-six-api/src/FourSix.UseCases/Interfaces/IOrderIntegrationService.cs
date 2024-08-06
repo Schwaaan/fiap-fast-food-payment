@@ -4,6 +4,6 @@ namespace FourSix.UseCases.Interfaces
 {
     public interface IOrderIntegrationService
     {
-        Task AtualizarPedido(Guid pedidoId, EnumStatusPagamento statusPagamento);
+        Task AtualizarPedido(Guid pedidoId, EnumStatusPagamento statusPagamento, DateTime dataAtualizacao);
     }
 }
