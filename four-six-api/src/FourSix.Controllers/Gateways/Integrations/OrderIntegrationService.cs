@@ -1,6 +1,12 @@
-﻿using FourSix.Domain.Entities.PagamentoAggregate;
+﻿using Amazon;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+using FourSix.Controllers.ViewModels;
+using FourSix.Domain.Entities.PagamentoAggregate;
 using FourSix.UseCases.Interfaces;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Diagnostics.CodeAnalysis;
 
 namespace FourSix.Controllers.Gateways.Integrations
@@ -8,34 +14,45 @@ namespace FourSix.Controllers.Gateways.Integrations
     [ExcludeFromCodeCoverage]
     public class OrderIntegrationService : IOrderIntegrationService
     {
-        private readonly HttpClient _httpClient;
-        public OrderIntegrationService(HttpClient httpClient, IConfiguration configuration)
+        private readonly AmazonSQSClient _amazonSQSClient;
+        private readonly string _endpointQueue;
+
+        public OrderIntegrationService(IConfiguration configuration)
         {
-            _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri(configuration.GetValue<string>("Endpoints:Orders"));
+            _amazonSQSClient = new AmazonSQSClient(RegionEndpoint.USEast1);
+            _endpointQueue = configuration.GetValue<string>("Endpoints:OrdersQueue");
         }
 
         public async Task AtualizarPedido(Guid pedidoId, EnumStatusPagamento statusPagamento)
         {
             if (statusPagamento != EnumStatusPagamento.AguardandoPagamento)
             {
-                int codigoPagamentoPedido = 3;
+                int codigoStatusPedido = 3;
 
                 switch (statusPagamento)
                 {
                     case EnumStatusPagamento.Pago:
-                        codigoPagamentoPedido = 3;
+                        codigoStatusPedido = 3;
                         break;
                     case EnumStatusPagamento.Cancelado:
-                        codigoPagamentoPedido = 7;
+                        codigoStatusPedido = 7;
                         break;
                     case EnumStatusPagamento.Negado:
-                        codigoPagamentoPedido = 8;
+                        codigoStatusPedido = 8;
                         break;
                 }
 
-                var response = await _httpClient.PutAsync($"/pedidos/{pedidoId}/status/{codigoPagamentoPedido}", null);
-                response.EnsureSuccessStatusCode();
+                var request = new SendMessageRequest
+                {
+                    QueueUrl = _endpointQueue,
+                    MessageBody = JsonConvert.SerializeObject(new PedidoModel(pedidoId, codigoStatusPedido),
+                    new JsonSerializerSettings
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    })
+                };
+
+                await _amazonSQSClient.SendMessageAsync(request);
             }
         }
     }

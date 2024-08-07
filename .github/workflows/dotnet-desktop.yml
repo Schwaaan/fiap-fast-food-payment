@@ -55,9 +55,8 @@ jobs:
         aws-region: us-east-1
     - name: Deploy to EKS
       run: | 
-          aws eks --region us-east-1 update-kubeconfig --name Fiap-FourSix
-          kubectl delete svc api-svc-payment-foursix foursixpaymentsql
-          kubectl delete deployment foursix-payment-deployment sqlserver-payment-deployment
+          aws eks --region us-east-1 update-kubeconfig --name fiap-foursix
+          kubectl delete deployment foursix-payment-deployment sqlserver-payment-deployment --ignore-not-found=true
           kubectl apply -f four-six-api/kubernetes/payment-sqlserver-deployment.yaml
           kubectl apply -f four-six-api/kubernetes/payment-sqlserver-service.yaml
           kubectl apply -f four-six-api/kubernetes/payment-api-deployment.yaml
