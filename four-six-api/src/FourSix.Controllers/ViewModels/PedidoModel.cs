@@ -1,18 +1,14 @@
-﻿using FourSix.Domain.Entities.PagamentoAggregate;
-
-namespace FourSix.Controllers.ViewModels
+﻿namespace FourSix.Controllers.ViewModels
 {
     public class PedidoModel
     {
-        public PedidoModel(Guid idPedido, int codigoPagamentoPedido, DateTime dataAtualizacao)
+        public PedidoModel(Guid id, int statusId)
         {
-            IdPedido = idPedido;
-            CodigoPagamentoPedido = codigoPagamentoPedido;
-            DataAtualizacao = dataAtualizacao;
+            Id = id;
+            StatusId = statusId;
         }
 
-        public Guid IdPedido { get; }
-        public int CodigoPagamentoPedido { get; }
-        public DateTime DataAtualizacao { get; }
+        public Guid Id { get; }
+        public int StatusId { get; }
     }
 }

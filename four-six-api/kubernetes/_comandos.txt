@@ -33,6 +33,10 @@ kubectl delete pv --all
 
 
 ---------DELETE ALL---------
+kubectl delete deployment -l app=foursix-payment-deployment --ignore-not-found=true
+kubectl delete deployment -l app=sqlserver-payment-deployment --ignore-not-found=true
+kubectl delete svc -l app=paymentsqlserver --ignore-not-found=true
+kubectl delete svc -l app=api-svc-payment-foursix --ignore-not-found=true
 kubectl delete all --all
 
 

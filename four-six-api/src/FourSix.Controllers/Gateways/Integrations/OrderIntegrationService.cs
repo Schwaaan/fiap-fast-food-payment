@@ -6,6 +6,7 @@ using FourSix.Domain.Entities.PagamentoAggregate;
 using FourSix.UseCases.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Diagnostics.CodeAnalysis;
 
 namespace FourSix.Controllers.Gateways.Integrations
@@ -22,29 +23,33 @@ namespace FourSix.Controllers.Gateways.Integrations
             _endpointQueue = configuration.GetValue<string>("Endpoints:OrdersQueue");
         }
 
-        public async Task AtualizarPedido(Guid pedidoId, EnumStatusPagamento statusPagamento, DateTime dataAtualizacao)
+        public async Task AtualizarPedido(Guid pedidoId, EnumStatusPagamento statusPagamento)
         {
             if (statusPagamento != EnumStatusPagamento.AguardandoPagamento)
             {
-                int codigoPagamentoPedido = 3;
+                int codigoStatusPedido = 3;
 
                 switch (statusPagamento)
                 {
                     case EnumStatusPagamento.Pago:
-                        codigoPagamentoPedido = 3;
+                        codigoStatusPedido = 3;
                         break;
                     case EnumStatusPagamento.Cancelado:
-                        codigoPagamentoPedido = 7;
+                        codigoStatusPedido = 7;
                         break;
                     case EnumStatusPagamento.Negado:
-                        codigoPagamentoPedido = 8;
+                        codigoStatusPedido = 8;
                         break;
                 }
 
                 var request = new SendMessageRequest
                 {
                     QueueUrl = _endpointQueue,
-                    MessageBody = JsonConvert.SerializeObject(new PedidoModel(pedidoId, codigoPagamentoPedido, dataAtualizacao))
+                    MessageBody = JsonConvert.SerializeObject(new PedidoModel(pedidoId, codigoStatusPedido),
+                    new JsonSerializerSettings
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    })
                 };
 
                 await _amazonSQSClient.SendMessageAsync(request);
